@@ -95,9 +95,13 @@ package
 			}
 			txt1.text = "Player1:" + p1Score;
 			txt2.text = "Player2:" + p2Score;
-			if (p1Score == 5 || p2Score == 5) {
+			if (p1Score == 5) {
 				// switch state
-				trace("SWITCH");
+				FlxG.switchState(new EndState("Player1", p1Score));
+			}
+			else if (p2Score == 5)
+			{
+				FlxG.switchState(new EndState("Player2", p2Score));
 			}
 		}
 		
