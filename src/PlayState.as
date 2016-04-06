@@ -7,6 +7,9 @@ package
 	 */
 	public class PlayState extends FlxState
 	{
+		[Embed(source="../data/point.mp3")]
+		private var scoreSound:Class;
+		
 		private var ball:Ball;
 		private var p1:Paddle1;
 		private var p2:Paddle2;
@@ -17,20 +20,21 @@ package
 		private var txt2:FlxText;
 		private var txt1:FlxText;
 		
+		
 		public function PlayState() 
 		{
-			ball = new Ball();
+			ball = new Ball(FlxG.width / 2, FlxG.height / 2);
 			
 			p1 = new Paddle1(DIST_FROM_WALL, PADDLE_VERTICAL_CENTER);
 			
 			p2 = new Paddle2(FlxG.width - DIST_FROM_WALL - 8, PADDLE_VERTICAL_CENTER);
 			
 			txt1 = new FlxText(0, DIST_FROM_WALL / 2, FlxG.width/4, "Player1:" + p1Score)
-			txt1.setFormat(null, 8,0xFFFFFFFF,"center")
+			txt1.setFormat(null, 8,0xFC0000,"center")
 			this.add(txt1);
 			
 			txt2 = new FlxText(3 * FlxG.width / 4, DIST_FROM_WALL / 2, FlxG.width/4, "Player2:" + p2Score)
-			txt2.setFormat(null, 8,0xFFFFFFFF,"center")
+			txt2.setFormat(null, 8,0x7EFC00,"center")
 			this.add(txt2);
 			
 			add(ball);
@@ -49,7 +53,7 @@ package
 				}
 				else
 				{
-					ball.x = p1.x;
+					ball.x = p1.x - ball.width;
 				}
 				ball.setXSpeed(-ball.getXSpeed());
 			}
@@ -62,7 +66,7 @@ package
 				}
 				else
 				{
-					ball.x = p2.x;
+					ball.x = p2.x - ball.width;
 				}
 				ball.setXSpeed(-ball.getXSpeed());
 			}
@@ -72,9 +76,11 @@ package
 				
 		private function isOverlap(b:Ball, p:Paddle):Boolean
 		{
-			if ((p.y <= b.y && b.y <= p.y + p.height) &&
-					(p.x <= b.x && b.x <= p.x + p.width)) {
+			if ((p.y - b.height <= b.y && b.y <= p.y + p.height) &&
+					(p.x - b.width <= b.x && b.x <= p.x + p.width)) {
 						p.play("Hit");
+						b.play("Hit");
+						FlxG.play(scoreSound);
 						return true;
 					}
 			return false;

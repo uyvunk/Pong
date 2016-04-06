@@ -10,6 +10,8 @@ package
 	{
 		[Embed(source="../data/ball.png")]
 		private var ballPng:Class;
+		[Embed(source="../data/hit.mp3")]
+		private var hitSound:Class;
 		
 		private var X_SPEED:int = 100;
 		private var Y_SPEED:int = 100;
@@ -18,7 +20,8 @@ package
 		{
 			super(X, Y);
 			loadGraphic(ballPng, true, false, 8, 8);
-			addAnimation("Play", [0, 1, 2], X_SPEED/20, false);
+			addAnimation("Play", [0, 1], X_SPEED / 20, false);
+			addAnimation("Hit", [2,1], 10, false);
 		}
 		
 		override public function update():void
@@ -47,6 +50,7 @@ package
 					x = FlxG.width - width;
 				}
 				X_SPEED = -X_SPEED;
+				FlxG.play(hitSound);
 			} 
 			else if (y < 0 || (y > FlxG.height - height))
 			{
@@ -59,6 +63,7 @@ package
 					y = FlxG.height - height;
 				}
 				Y_SPEED = -Y_SPEED;
+				FlxG.play(hitSound);
 			}
 		}
 		

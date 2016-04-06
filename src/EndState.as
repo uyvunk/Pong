@@ -8,32 +8,37 @@ package
 	 */
 	public class EndState extends FlxState
 	{
+		[Embed(source="../data/win.mp3")]
+		private var winSound:Class;
+		private var playSound:Boolean = true;
+		
 		
 		public function EndState(p:String, s:int) 
 		{
 			super();
-			var txt:FlxText
-			txt = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "WINNER:  " + p)
-			txt.setFormat(null,16,0xFFFFFFFF,"center")
-			this.add(txt);
+			var txt1:FlxText;
+			txt1 = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "WINNER:  " + p 
+																	+ "\nScore: " + s);
+			txt1.setFormat(null,16,0xFC8F00,"center")
+			this.add(txt1);
 			
-			var txt:FlxText
-			txt = new FlxText(0, (FlxG.width / 2) - 80, FlxG.width, "SCORE:  " + s)
-			txt.setFormat(null,16,0xFFFFFFFF,"center")
-			this.add(txt);
-			
-			txt = new FlxText(0, FlxG.height  -24, FlxG.width, "PRESS X TO RESTART")
-			txt.setFormat(null, 8, 0xFFFFFFFF, "center");
-			this.add(txt);
+			var txt2:FlxText = new FlxText(0, FlxG.height  -24, FlxG.width, "PRESS X TO RESTART")
+			txt2.setFormat(null, 8, 0xFFFFFFFF, "center");
+			this.add(txt2);
 		}
 		
 		 override public function update():void
         {
-            if (FlxG.keys.pressed("X"))
+            super.update();
+			if (playSound)
+			{
+				FlxG.play(winSound);
+				playSound = false;				
+			}
+			if (FlxG.keys.pressed("X"))
             {
                 FlxG.switchState(new PlayState());
             }
-            super.update();
         }
 		
 	}
