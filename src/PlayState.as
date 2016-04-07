@@ -13,7 +13,7 @@ package
 		private var ball:Ball;
 		private var p1:Paddle1;
 		private var p2:Paddle2;
-		private var DIST_FROM_WALL:int = 20;
+		private var DIST_FROM_WALL:int = 25;
 		private var PADDLE_VERTICAL_CENTER:int = FlxG.height / 2 - 16;
 		private var p1Score:int = 0;
 		private var p2Score:int = 0;

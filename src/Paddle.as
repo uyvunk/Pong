@@ -8,7 +8,7 @@ package
 	 */
 	public class Paddle extends FlxSprite
 	{
-		protected var SPEED:int = 450;
+		protected var SPEED:int = 400;
 		
 		public function Paddle(X:Number = 0, Y:Number = 0) 
 		{

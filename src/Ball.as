@@ -13,8 +13,8 @@ package
 		[Embed(source="../data/hit.mp3")]
 		private var hitSound:Class;
 		
-		private var X_SPEED:int = 100;
-		private var Y_SPEED:int = 100;
+		private var X_SPEED:int = 140;
+		private var Y_SPEED:int = 140;
 		
 		public function Ball(X:Number = 0, Y:Number = 0) 
 		{
