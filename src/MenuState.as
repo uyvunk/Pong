@@ -22,11 +22,11 @@ package
 		txt.setFormat(null,16,0xFC8F00,"center")
 		this.add(txt);
 		
-		txt = new FlxText(40, FlxG.height  -50, FlxG.width - 40, ">>Player1:Use W/S to move your paddle")
+		txt = new FlxText(40, FlxG.height  -50, FlxG.width - 40, ">> Player1: Use W/S to move your paddle")
 		txt.setFormat(null,8,0xFC0000,"left")
 		this.add(txt);
 		
-		txt = new FlxText(40, FlxG.height  -40, FlxG.width - 40, ">>Player2:Use UP/DOWN to move your paddle")
+		txt = new FlxText(40, FlxG.height  -40, FlxG.width - 40, ">> Player2: Use UP/DOWN to move your paddle")
 		txt.setFormat(null,8,0x7EFC00,"left")
 		this.add(txt);
 			

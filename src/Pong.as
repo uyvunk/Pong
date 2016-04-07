@@ -7,7 +7,7 @@ package
 	 * @author Vu Nguyen
 	 */
 	
-	[SWF(width = "640",height="480",backgroundColor="#000000")]
+	[SWF(width = "640",height="480",backgroundColor="#F0E5A5")]
 	[Frame(factoryClass="Preloader")]
 	public class Pong extends FlxGame
 	{
